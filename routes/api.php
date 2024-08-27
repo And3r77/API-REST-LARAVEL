@@ -27,4 +27,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/news/{id}', [NewsController::class, 'index2']);
     Route::post('/news1', [NewsController::class, 'index3']);
 
+    // Actualizar una noticia específica por ID con el método PUT
+    Route::put('/news/{id}', [NewsController::class, 'update']);
+    
+    // Crear una noticia (asegúrate de tener el método correcto en tu controlador)
+    Route::post('/news', [NewsController::class, 'store']);
 });

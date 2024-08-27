@@ -28,4 +28,22 @@ class NewsController extends Controller
 
         return response()->json($news);
     }
+
+    // Método para actualizar una noticia específica
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            // Otros campos de validación según necesidad
+        ]);
+
+        $news = User::findOrFail($id);
+        $news->update($validatedData);
+
+        return response()->json([
+            'message' => 'Noticia actualizada con éxito.',
+            'data' => $news,
+        ]);
+    }
 }
