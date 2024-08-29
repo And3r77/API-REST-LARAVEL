@@ -6556,6 +6556,7 @@ return array(
     'Tests\\Feature\\DeleteApiTokenTest' => $baseDir . '/tests/Feature/DeleteApiTokenTest.php',
     'Tests\\Feature\\EmailVerificationTest' => $baseDir . '/tests/Feature/EmailVerificationTest.php',
     'Tests\\Feature\\ExampleTest' => $baseDir . '/tests/Feature/ExampleTest.php',
+    'Tests\\Feature\\NewsControllerTest' => $baseDir . '/tests/Feature/NewsControllerTest.php',
     'Tests\\Feature\\PasswordConfirmationTest' => $baseDir . '/tests/Feature/PasswordConfirmationTest.php',
     'Tests\\Feature\\PasswordResetTest' => $baseDir . '/tests/Feature/PasswordResetTest.php',
     'Tests\\Feature\\ProfileInformationTest' => $baseDir . '/tests/Feature/ProfileInformationTest.php',

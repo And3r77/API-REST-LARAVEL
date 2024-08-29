@@ -9,7 +9,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = User::orderBy('created_at', 'desc')->take(50)->get();
+        $news = User::orderBy('created_at', 'desc')->get();
 
         return response()->json($news);
     }
@@ -29,21 +29,29 @@ class NewsController extends Controller
         return response()->json($news);
     }
 
-    // Método para actualizar una noticia específica
-    public function update(Request $request, $id)
+    // Método para actualizar un usuario específico
+    public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            // Otros campos de validación según necesidad
-        ]);
-
-        $news = User::findOrFail($id);
-        $news->update($validatedData);
+        //return 1;
+        $user = User::findOrFail($request->id);
+        $user->email=$request->email;
+        $user->name=$request->name;
+        $user->save();
 
         return response()->json([
-            'message' => 'Noticia actualizada con éxito.',
-            'data' => $news,
+            'message' => 'Usuario actualizado con éxito.',
+            'data' => $user,
+        ]);
+    }
+
+    public function destroy(Request $request)
+    {
+        $news = User::findOrFail($request->id); // Encuentra el registro por ID o lanza una excepción si no se encuentra
+
+        $news->delete(); // Elimina el registro
+
+        return response()->json([
+            'message' => 'Usuario eliminado con éxito.'
         ]);
     }
 }
